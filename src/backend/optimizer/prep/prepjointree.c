@@ -211,6 +211,7 @@ pull_up_sublinks(PlannerInfo *root)
 	Relids		relids;
 
 	/* Begin recursion through the jointree */
+    // 对查询树中的 jointree 进行遍历, jointree: from/where
 	jtnode = pull_up_sublinks_jointree_recurse(root,
 											   (Node *) root->parse->jointree,
 											   &relids);
@@ -231,6 +232,7 @@ pull_up_sublinks(PlannerInfo *root)
  * In addition to returning the possibly-modified jointree node, we return
  * a relids set of the contained rels into *relids.
  */
+// Relids: jtnode 参数中涉及的表集合
 static Node *
 pull_up_sublinks_jointree_recurse(PlannerInfo *root, Node *jtnode,
 								  Relids *relids)
