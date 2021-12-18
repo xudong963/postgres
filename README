@@ -2,3 +2,24 @@ PostgreSQL Database Management System
 =====================================
 
 This branch has some annotations from myself.
+
+```
+ ./configure --enable-debug --enable-cassert --enable-thread-safety --prefix=/home/carlos/pg/install/postgres
+ make
+ make install
+ ./initdb -D /home/carlos/pg/data
+ ./pg_ctl -D /home/carlos/pg/data -l logfile start
+ ./psql -d postgres
+ gbd attach pid
+```
+
+```
+➜  bin ps -aux | grep postgres
+carlos    561327  0.0  0.8 172508 17844 ?        Ss   23:48   0:00 /home/carlos/pg/install/postgres/bin/postgres -D /home/carlos/pg/data
+carlos    561328  0.0  0.1 172508  2508 ?        Ss   23:48   0:00 postgres: checkpointer 
+carlos    561329  0.0  0.1 172508  2508 ?        Ss   23:48   0:00 postgres: background writer 
+carlos    561331  0.0  0.3 172508  7648 ?        Ss   23:48   0:00 postgres: walwriter 
+carlos    561332  0.0  0.2 173048  5464 ?        Ss   23:48   0:00 postgres: autovacuum launcher 
+carlos    561333  0.0  0.1  27156  2704 ?        Ss   23:48   0:00 postgres: stats collector 
+carlos    561334  0.0  0.2 172928  5260 ?        Ss   23:48   0:00 postgres: logical replication launcher 
+```
